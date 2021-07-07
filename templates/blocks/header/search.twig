@@ -1,0 +1,7 @@
+<form role="search" method="get" id="searchform" class="searchform" action="{{site.link}}">
+    <div>
+        <label class="screen-reader-text small" for="s">Search:</label>
+        <input type="text" placeholder="Search" value="{{ function('get_search_query') }}" name="s" id="s" />
+        <button type="submit" id="searchsubmit" class="btn-link btn btn-search">></button>
+    </div>
+</form>

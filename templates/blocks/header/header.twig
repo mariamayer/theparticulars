@@ -2,7 +2,7 @@
 
 	<div class="header__title-bar">
         <button
-			class="header__menu-btn btn btn-link"
+			class="header__menu-btn menu-link btn btn-link"
 			type="button"
 			aria-label="menu"
 			aria-expanded="false"
@@ -16,6 +16,17 @@
 				src="{{ theme.link }}/public/images/close-modal.png"
 				alt=""
 				class="img-fluid open">
+		</button>
+		<button
+			class="header__menu-btn btn btn-link"
+			type="button"
+			data-toggle="modal" 
+			data-target="#searchModal"
+		>
+			<img
+				src="{{ theme.link }}/public/images/search-icon.svg"
+				alt=""
+				class="img-fluid">
 		</button>
     </div>
 
