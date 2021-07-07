@@ -1,0 +1,73 @@
+{% extends "templates/base.twig" %}
+
+{% block main_class %}shop-layout shop-layout--styles{% endblock %}
+{% block content %}
+
+    {% for post in posts %}
+
+        <section class="shop-layout__intro">
+            <div class="container">
+                <div class="row text-center">
+
+                    <div class="col">
+                        <h1 class="h1 mb-4-lg">
+                            {{ post.title }}
+                        </h1>
+                        {{ post.content }}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    <!-- content right -->
+        {# <section id="sticky-anchor" class="container mb-7">
+
+            <div class="row">
+                <div class="col-sm-12 col-md-3" data-sticky-container>
+                    <div data-sticky data-margin-top="5" data-top-anchor="sticky-anchor:top" data-btm-anchor="sticky-anchor:bottom">
+                        <div class="filters-button-group">
+                            <h2>
+                                Categories
+                            </h2>
+                            <button class="button button--link is-checked" style="text-transform:uppercase" data-filter="*">all</button>
+
+							{% for list in SHOPSTYLE_ACF %}
+								<br/><button style="text-transform:uppercase" class="button button--link" data-filter=".shopstyle-list-item--{{list['id']}}">{{list['title']}}</button>
+							{% endfor %}
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-9">
+
+                    <div class="row shopstyle-con-list">
+
+						{% for list in SHOPSTYLE_FAV %}
+
+							{% set listID = list['product_id'] %}
+							{% for item in list['favorites'] %}
+								<div class="col-sm-6 col-md-4 shopstyle-list-item shopstyle-list-item--{{listID}}">
+									<div class="shopstyle-list-item__inner">
+										<a class="linked-img" href="{{ item['product']['clickUrl'] }}" target="_blank">
+											<img class="img-fluid" src="{{ item['product']['image']['sizes']['IPhone']['url'] }}" alt="shopstyle apparel"/>
+										</a>
+									</div>
+								</div>
+
+							{% endfor %}
+
+						{% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </section> #}
+
+
+    {% endfor %}
+
+{% endblock %}

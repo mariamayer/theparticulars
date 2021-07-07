@@ -1,0 +1,14 @@
+<div class="footer__insta container">
+	<div class="row">
+		<div class="col-sm-12 footer__insta-follow">
+			<p>
+				Follow Along <a href="https://www.instagram.com/the.particulars/">@the.particulars</a>
+			</p>
+		</div>
+		{% for insta in INSTA_FEED %}
+			<div class="col-sm-4 col-md-3 insta-block insta-block--footer" style="background-image: url({{insta.thumbnail}});">
+				{{insta.content}}
+			</div>
+		{% endfor %}
+	</div>
+</div>

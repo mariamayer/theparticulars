@@ -1,0 +1,38 @@
+{% set FEATURED_INTERVIEW = postID ? postID : options.featured_interview[0] %}
+{% set FEATURED_INTERVIEW_SIDE_IMG = function('get_field', 'side_image', FEATURED_INTERVIEW) %}
+{% set FEATURED_INTERVIEW_NAME = function('get_field', 'interviewee_name', FEATURED_INTERVIEW) %}
+{% set FEATURED_INTERVIEW_PERSON_IMG = function('get_the_post_thumbnail_url', FEATURED_INTERVIEW) %}
+{% set FEATURED_INTERVIEW_LINK = function('get_permalink', FEATURED_INTERVIEW) %}
+<section class="featured-interview {% if postID %}featured-interview--single-post{% else %}featured-interview--normal{% endif %} container mb-7">
+
+	<div class="row align-items-center">
+		<div class="col-sm-12 col-md-6 featured-interview__bg" style="background-image: url({{TimberImage(FEATURED_INTERVIEW_SIDE_IMG)}});"></div>
+		<div class="col-sm-12 col-md-6 featured-interview__person" style="background-image: url({{TimberImage(FEATURED_INTERVIEW_SIDE_IMG)}});">
+
+			{% if postID %}
+				<header class="featured-interview__header">
+					<span class="featured-interview__misc mb-4">
+						Chatting With
+					</span>
+					<h1 class=" h1 mb-5-lg">
+						{{FEATURED_INTERVIEW_NAME}}
+					</h1>
+				</header>
+			{% else %}
+				<span class="featured-interview__misc mb-4">
+					Trending
+				</span>
+				<h2 class="mb-5-lg">
+					{{FEATURED_INTERVIEW_NAME}}
+				</h2>
+			{% endif %}
+			<a class="featured-interview__permalink read-more-cursor" href="{{FEATURED_INTERVIEW_LINK}}">
+				<img src="{{FEATURED_INTERVIEW_PERSON_IMG}}" alt="" class="featured-interview__img img-fluid">
+				{# <span class="header__featured-link-read" aria-hidden="true">
+					Read<br/> Post
+				</span> #}
+			</a>
+		</div>
+	</div>
+
+</section>

@@ -1,0 +1,121 @@
+/*media examples*/
+
+// ***** that size min ***** //
+// @include media-breakpoint-up(xs) { ... }
+// @include media-breakpoint-up(sm) { ... }
+// @include media-breakpoint-up(md) { ... }
+// @include media-breakpoint-up(lg) { ... }
+// @include media-breakpoint-up(xl) { ... }
+
+// ***** that size and down ***** //
+// @include media-breakpoint-down(xs) { ... }
+// @include media-breakpoint-down(sm) { ... }
+// @include media-breakpoint-down(md) { ... }
+// @include media-breakpoint-down(lg) { ... }
+
+// ***** only ****** //
+// @include media-breakpoint-only(xs) { ... }
+// @include media-breakpoint-only(sm) { ... }
+// @include media-breakpoint-only(md) { ... }
+// @include media-breakpoint-only(lg) { ... }
+// @include media-breakpoint-only(xl) { ... }
+
+// .element {
+//     // Converted to 20em
+//     @include breakpoint(320px) { }
+//     // Unitless values are assumed to be pixels
+//     @include breakpoint(320) { }
+//     // Converted to 40em
+//     @include breakpoint(40rem) { }
+// }
+
+// @media only screen and (min-width: 1350px) {}
+// @media only screen and (max-width: 1350px) {}
+// @media only screen and (min-width: 1350px) and (max-width: 1350px) {}
+
+a {
+	@include link-transition;
+}
+
+body {
+	background-color: $white;
+	&.home,
+	&.page-template-tmpl-about {
+		background-color: $bg-color;
+	}
+	&.category-3 {
+		background-color: $beige;
+	}
+}
+
+.off-canvas {
+	// overflow: hidden;
+	position: relative;
+	&--hidden {
+		overflow: hidden;
+	}
+}
+
+.sticky-top {
+	@include media-breakpoint-down(sm){
+		position: relative;
+	}
+}
+
+meta.foundation-version {
+	font-family: "/5.5.2/";
+}
+
+meta.foundation-mq-xsmall {
+	font-family: "/only screen/";
+	width: 0;
+}
+
+meta.foundation-mq-xsmall-only {
+	font-family: "/only screen and (max-width: 320px)/";
+	width: 0;
+}
+
+meta.foundation-mq-small {
+	font-family: "/only screen and (min-width: 0px)/";
+	width: 0;
+}
+
+meta.foundation-mq-small-only {
+	font-family: "/only screen and (min-width: 0px) and (max-width: 767px)/";
+	width: 0;
+}
+
+meta.foundation-mq-medium {
+	font-family: "only screen and (min-width: 768px)";
+	width: 768px;
+}
+
+meta.foundation-mq-medium-only {
+	font-family: "/only screen and (min-width: 768px) and (max-width: 1023px)/";
+	width: 768px;
+}
+
+meta.foundation-mq-large {
+	font-family: "/only screen and (min-width: 1024px)/";
+	width: 992px;
+}
+
+meta.foundation-mq-large-only {
+	font-family: "/only screen and (min-width: 992px) and (max-width: 1199px)/";
+	width: 992px;
+}
+
+meta.foundation-mq-xlarge {
+	font-family: "/only screen and (min-width: 1200px)/";
+	width: 1200px;
+}
+
+meta.foundation-mq-xlarge-only {
+	font-family: "/only screen and (min-width: 1200px)/";
+	width: 1200px;
+}
+
+meta.foundation-data-attribute-namespace {
+	font-family: false;
+}

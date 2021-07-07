@@ -1,0 +1,167 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {% for post in posts %}
+        <article {{ function('post_class') }}>
+
+			{# page template #}
+			{% if PAGE_TEMPLATE == 'tmpl-interview.php' %}
+
+				{% if FEATURED_IMG_INTERVIEWEE %}
+
+					{% include "blocks/posts/featured-interview.twig" with {
+						postID: post.ID,
+					}%}
+
+				{% else %}
+					<div class="single-post__spacer my-5 clearfix"></div>
+				{% endif %}
+			{% else %}
+
+				{% if FEATURED_IMG %}
+					{% include "blocks/posts/featured-img.twig" with {
+						img: FEATURED_IMG,
+					}%}
+
+				{% else %}
+					<div class="single-post__spacer my-5 clearfix"></div>
+				{% endif %}
+
+				<header class="single-post__title-header mb-6">
+					<h1 class="entry-title mb-4-lg">{{ post.title }}</h1>
+					{% include "blocks/posts/entry-meta.twig" %}
+				</header>
+
+			{% endif %}
+			{# end page template #}
+
+
+			{% if post.meta('content_types') %}
+
+				{% for content_type in post.meta('content_types') %}
+
+					{% if content_type.acf_fc_layout == 'intro_basic' %}
+
+						{% include "blocks/posts/flex-content/intro-basic.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'images_left_small_big_right' %}
+
+						{% include "blocks/posts/flex-content/images-group-one.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'images_big_left_small_right' %}
+
+						{% include "blocks/posts/flex-content/images-group-two.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'content' %}
+
+						{% include "blocks/posts/flex-content/content.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'carousel' %}
+
+						{% include "blocks/posts/flex-content/carousel.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'shop_style_widget' %}
+
+						{% include "blocks/posts/flex-content/shop-style.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'content_left_fixed_right' %}
+
+						{% include "blocks/posts/flex-content/content-fixed-right.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'content_right_fixed_left' %}
+
+						{% include "blocks/posts/flex-content/content-fixed-left.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'parallax_image' %}
+
+						{% include "blocks/posts/flex-content/parallax.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'pull_quote' %}
+
+						{% include "blocks/posts/flex-content/pull-quote.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'light_box_image' %}
+
+						{% include "blocks/posts/flex-content/light-box.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'video_block' %}
+
+						{% include "blocks/posts/flex-content/video.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'featured_link' %}
+
+						{% include "blocks/posts/flex-content/featured-link.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'recipe' %}
+
+						{% include "blocks/posts/flex-content/recipe.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% endif %}
+				{% endfor %}
+
+			{% else %}
+
+				<div class="container mb-7">
+					<div class="row justify-content-center">
+						<div class="col-sm-12 col-md-9">
+							{{post.content}}
+						</div>
+					</div>
+				</div>
+
+			{% endif %}
+
+			{# prev next #}
+			{% if PAGE_TEMPLATE == 'tmpl-interview.php' %}
+				{% include 'blocks/posts/next-interview.twig' %}
+			{% else %}
+				{% include 'blocks/posts/prev-next.twig' %}
+			{% endif %}
+
+			<section class="container container mb-6">
+				<div class="row row--more-margin-md">
+					{% for post in RELATED_CONTENT %}
+						{% include "blocks/posts/content.twig" with {
+								post: post,
+								class: 'col-sm-12 col-md-4 post-preview post-preview--normal mb-4'
+							}
+						%}
+					{% endfor %}
+				</div>
+			</section>
+
+            {# <footer>
+                {{ wp_link_pages }}
+                {% include "blocks/posts/comment.twig" %}
+            </footer> #}
+        </article>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html {{ function('language_attributes') }}>
+
+    {% include 'blocks/head.twig' %}
+
+    <body {{ function('body_class') }} data-rest="{{ function('get_rest_url') }}" data-url="{{ function('get_site_url') }}">
+
+		<div class="off-canvas">
+
+			{% include 'blocks/header/header.twig' %}
+
+			<main id="waypoint" class="main {% block main_class %}{% endblock %}">
+				{% block content %}{% endblock %}
+			</main>
+
+			{#
+				{% include 'blocks/sidebar.twig' %}
+			#}
+
+			{% block footer %}
+
+				{% include 'blocks/footer.twig' %}
+
+			{% endblock %}
+
+			<div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-label="newsletter modal" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="container">
+							<div class="row align-items-center">
+								<div class="col-sm-12 col-lg-6 text-center">
+									<h2>
+										{# Register your email for Closets2Closets 2.0 #}
+                                        Want more Particulars?
+									</h2>
+                                    <span>Sign up for our newsletter.</span>
+								</div>
+								<div class="col-sm-12 col-lg-6">
+									{% filter shortcodes %}
+										[gravityform id="2" title="false" description="false" ajax="true"]
+									{% endfilter %}
+								</div>
+								<button type="button" class="btn btn-plain" data-dismiss="modal" aria-label="close modal">
+									<img src="{{ theme.link }}/public/images/close-modal.png" alt="" >
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{ function('wp_footer') }}
+
+    </body>
+
+</html>

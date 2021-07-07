@@ -1,0 +1,28 @@
+{% set older_post = function('get_previous_post', TRUE) %}
+
+{# {% set FEATURED_INTERVIEW = options.featured_interview[0] %} #}
+{% set FEATURED_INTERVIEW_SIDE_IMG = function('get_field', 'side_image', older_post) %}
+{% set FEATURED_INTERVIEW_NAME = function('get_field', 'interviewee_name', older_post) %}
+{% set FEATURED_INTERVIEW_PERSON_IMG = function('get_the_post_thumbnail_url', older_post) %}
+{% set FEATURED_INTERVIEW_LINK = function('get_permalink', older_post) %}
+<section class="featured-interview featured-interview--pagination container mb-7">
+
+	<div class="row align-items-center">
+		<div class="col-sm-12 col-md-6 featured-interview__bg featured-interview__bg--full" style="background-image: url({{TimberImage(FEATURED_INTERVIEW_SIDE_IMG)}});"></div>
+		<div class="col-sm-12 col-md-6 featured-interview__person">
+			<span class="featured-interview__misc mb-4">
+				Next Interview
+			</span>
+			<h2 class="mb-5-lg">
+				{{FEATURED_INTERVIEW_NAME}}
+			</h2>
+			<a class="featured-interview__permalink read-more-cursor" href="{{FEATURED_INTERVIEW_LINK}}">
+				<img src="{{FEATURED_INTERVIEW_PERSON_IMG}}" alt="" class="img-fluid">
+				{# <span class="header__featured-link-read" aria-hidden="true">
+					Read<br/> Post
+				</span> #}
+			</a>
+		</div>
+	</div>
+
+</section>

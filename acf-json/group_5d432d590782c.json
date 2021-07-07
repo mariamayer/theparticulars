@@ -1,0 +1,62 @@
+{
+    "key": "group_5d432d590782c",
+    "title": "Post Type - Instagram",
+    "fields": [
+        {
+            "key": "field_5d432d7245cc5",
+            "label": "Product Widget Normal",
+            "name": "product_widget_normal",
+            "type": "textarea",
+            "instructions": "1 row",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5d432d8845cc6",
+            "label": "Product Widget Featured",
+            "name": "product_widget_featured",
+            "type": "textarea",
+            "instructions": "2x2 (2 rows, columns)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "instagram"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1564683689
+}

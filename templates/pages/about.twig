@@ -1,0 +1,133 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+    {% for post in posts %}
+
+        <article {{ function('post_class', 'single-post single-post--about') }}>
+
+			{% if post.meta('content_types') %}
+
+				{% for content_type in post.meta('content_types') %}
+
+					{% if content_type.acf_fc_layout == 'intro_basic' %}
+
+						{% include "blocks/posts/flex-content/intro-basic.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'images_left_small_big_right' %}
+
+						{% include "blocks/posts/flex-content/images-group-one.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'images_big_left_small_right' %}
+
+						{% include "blocks/posts/flex-content/images-group-two.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'content' %}
+
+						{% include "blocks/posts/flex-content/content.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'carousel' %}
+
+						{% include "blocks/posts/flex-content/carousel.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'shop_style_widget' %}
+
+						{% include "blocks/posts/flex-content/shop-style.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'content_left_fixed_right' %}
+
+						{% include "blocks/posts/flex-content/content-fixed-right.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'content_right_fixed_left' %}
+
+						{% include "blocks/posts/flex-content/content-fixed-left.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'parallax_image' %}
+
+						{% include "blocks/posts/flex-content/parallax.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% elseif content_type.acf_fc_layout == 'pull_quote' %}
+
+						{% include "blocks/posts/flex-content/pull-quote.twig" with {
+							content_type: content_type,
+						}%}
+
+					{% endif %}
+				{% endfor %}
+
+			{% else %}
+
+				<div class="container mb-7">
+					<div class="row justify-content-center">
+						<div class="col-sm-12 col-md-9">
+							{{post.content}}
+						</div>
+					</div>
+				</div>
+
+			{% endif %}
+
+			<!-- contact us page -->
+			<section id="contact-form" class="single-post__contact-me pb-7 pt-8">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-sm-12">
+							<h2
+								class="h1 text-center pb-7"
+							>
+								Get In Touch
+							</h2>
+						</div>
+						<div
+							class="col-sm-12 col-md-5"
+						>
+							{{post.get_field('form_text')}}
+						</div>
+
+						<div
+							class="col-sm-12 col-md-6"
+						>
+							{% filter shortcodes %}
+								[gravityform id="3" title="false" description="false" ajax="true"]
+							{% endfilter %}
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+        </article>
+
+		<section class="recent-posts container mb-7 pt-8" data-js="move-recent-posts">
+			<div class="row row--more-margin-md">
+				{% for post in recentPostsPartOne %}
+					{% include "blocks/posts/content.twig" with {
+							post: post,
+							class: 'col-sm-12 col-md-4 post-preview post-preview--normal mb-4'
+						}
+					%}
+				{% endfor %}
+			</div>
+		</section>
+
+    {% endfor %}
+
+{% endblock %}

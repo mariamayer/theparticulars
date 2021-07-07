@@ -1,0 +1,20 @@
+{% set FEATURED_LOOK = options.post_featured_look[0] %}
+{% set SHOP_FIELD = function('get_field', 'product_widget_featured', FEATURED_LOOK.ID) %}
+
+<section class="featured-shop container">
+
+	<div class="row">
+
+		<div class="col-sm-12 col-md-5 featured-shop__img" style="background-image: url({{function('get_the_post_thumbnail_url', FEATURED_LOOK.ID, 'full')}});">
+		</div>
+
+		<div class="col-sm-12 col-md-7 featured-shop__items">
+			<h2 class="misc-title">
+				SHOP MY INSTAGRAM
+			</h2>
+			{{SHOP_FIELD}}
+		</div>
+
+	</div>
+
+</section>

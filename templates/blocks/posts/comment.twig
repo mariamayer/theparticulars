@@ -1,0 +1,32 @@
+{{ function('comment_form') }}
+
+<ol class="comment-list">
+    {% for comment in post.comments %}
+        <li id="li-comment-{{comment.ID}}">
+            <article id="comment-{{comment.ID}}" class="parent-comment comment {{ comment.comment_type }}">
+               
+               <div class="comment-details clr">
+                    
+                    <p class="date"><strong class="name">{{comment.comment_author}}</strong> {{ comment.date }} at {{comment.time}}: {{ comment.reply_link( "Reply") }}</p>
+                    <p class="comment">{{ comment.content }}</p>
+                </div>
+                       
+            </article>
+            {% if comment.children %}
+                <ul class="children">
+                    {% for subComment in comment.children %}
+                        <li id="comment-{{subComment.ID}}">
+                            <article id="comment-{{subComment.ID}}" class="sub-comment comment">
+                                <div class="comment-details clr">
+                                    {# {{ subComment.reply_link() }} #}
+                                    <p class="date"><strong>{{subComment.comment_author}}</strong>  {{ subComment.date }} at {{subComment.time}}:</p>
+                                    <p class="comment">{{ subComment.content }}</p>
+                                </div>
+                            </article>
+                        </li>
+                    {% endfor %} 
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ol>

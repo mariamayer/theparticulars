@@ -1,0 +1,39 @@
+<article {{ function('post_class', class) }}>
+	<div class="post-preview__inner">
+		<div class="post-preview__img">
+			<a
+				class="post-preview__link post-preview__link-bg"
+				href="{{ post.link }}"
+				style="background-image: url({{post.thumbnail | resize('thumbnail')}});"
+				aria-label="{{ post.title }}">
+			</a>
+			{% if post.shopping_preview %}
+				<div class="post-preview__shop">
+					<span class="post-preview__product-title" role="button" data-js="shop-products">
+						Shop The Look <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i>
+					</span>
+
+					<div class="post-preview__items">
+						{{post.shopping_preview}}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+		<header
+			class="mb-3"
+		>
+			<h2 class="post-preview__title post-preview__title--with-link">
+				<a href="{{ post.link }}">{{ post.title }}</a>
+			</h2>
+		</header>
+		<div class="post-preview__summary mb-4">
+			{{ post.post_excerpt }}
+		</div>
+		<a
+			href="{{ post.link }}"
+			class="post-preview__read-more"
+		>
+			Read More >
+		</a>
+	</div>
+</article>

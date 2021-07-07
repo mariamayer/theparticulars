@@ -1,0 +1,48 @@
+.footer {
+	&__insta-follow {
+		background: $white;
+		text-align: center;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		p {
+			@extend .small;
+			margin: 0;
+		}
+		a {
+			color: $black;
+		}
+	}
+	&--main {
+		overflow: hidden;
+		.footer__insta {
+			max-width: 100%;
+		}
+
+		.footer__misc {
+			padding-top: 75px;
+			padding-bottom: 75px;
+			max-width: 750px;
+			@include media-breakpoint-up(md){
+				padding-top: 100px;
+				padding-bottom: 200px;
+			}
+		}
+
+		.footer__menu {
+			padding: 0;
+			li {
+				list-style: none;
+				float: left;
+				width: 50%;
+				margin-bottom: 10px;
+				&:nth-child(2n+1){
+					clear: left;
+				}
+				a {
+					@extend .small;
+					color: $black;
+				}
+			}
+		}
+	}
+}

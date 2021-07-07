@@ -1,0 +1,32 @@
+<header class="header header--main">
+
+	<div class="header__title-bar">
+        <button
+			class="header__menu-btn btn btn-link"
+			type="button"
+			aria-label="menu"
+			aria-expanded="false"
+			data-js="toggle-menu"
+		>
+			<img
+				src="{{ theme.link }}/public/images/hamburger-menu.png"
+				alt=""
+				class="img-fluid closed">
+				<img
+				src="{{ theme.link }}/public/images/close-modal.png"
+				alt=""
+				class="img-fluid open">
+		</button>
+    </div>
+
+    <div class="header__top-bar" id="top-menu">
+        {% block header %}
+
+        	{% include 'blocks/header/header-title.twig' %}
+
+
+            {% include 'blocks/header/nav-primary.twig' with {menu: menu.get_items} %}
+
+        {% endblock %}
+    </div>
+</header>

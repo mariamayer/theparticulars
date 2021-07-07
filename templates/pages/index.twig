@@ -1,0 +1,64 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {# {% include 'blocks/header/page-header.twig' %} #}
+
+	 {% include "blocks/posts/featured-post.twig" with {
+			post: FEATURED_POST
+		}
+	%}
+
+	<article>
+
+		<section class="container container--short mb-5-lg">
+			{% set GROUPED_POSTS = firstEight|batch(2) %}
+			{% for groups in GROUPED_POSTS %}
+			{% set GROUPED_CLASS = loop.index is odd ? 'row--staggered-left': 'row--staggered-right' %}
+				<div class="row align-items-center row--staggered {{GROUPED_CLASS}} mb-3">
+					{% for post in groups %}
+						{% include "blocks/posts/content-basic.twig" with {
+								post: post,
+								class: 'col-sm-12 col-md-6 post-preview post-preview--simple mb-5'
+							}
+						%}
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</section>
+
+		{% include "blocks/posts/featured-interview.twig" %}
+
+		<section class="container pt-5-lg">
+			<div class="row row row--more-margin-md">
+				{% for post in offsetEight %}
+					{% include "blocks/posts/content.twig" with {
+							post: post,
+							class: 'col-sm-12 col-md-4 post-preview post-preview--normal mb-7'
+						}
+					%}
+				{% endfor %}
+			</div>
+		</section>
+
+	</article>
+
+
+
+    {# {% for post in posts %}
+	{{blah}}
+
+        {% include "blocks/posts/content.twig" with {
+			post: post,
+			class: 'col-sm-12 col-md-4 post-preview post-preview--normal mb-4'
+		}%}
+
+    {% endfor %} #}
+
+{% endblock %}
+
+{% block sidebar %}
+
+    {% include "blocks/sidebar.twig" %}
+
+{% endblock %}

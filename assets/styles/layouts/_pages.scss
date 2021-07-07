@@ -1,0 +1,118 @@
+main {
+	position: relative;
+	z-index: 1;
+	padding-top: 63px;
+	transition: padding-top .25s ease-out;
+	@include media-breakpoint-up(md){
+		padding-top: 95px
+	}
+
+	body.scrolling & {
+		padding-top: 63px;
+	}
+}
+
+.page-template-tmpl-about {
+	main {
+		padding-top: 125px;
+		@include media-breakpoint-up(md){
+			padding-top: 200px
+		}
+
+		.single-post__fixed-content,
+		.single-post__wysiwyg {
+			h3 {
+				@extend .h2;
+				text-decoration: underline;
+				margin-bottom: 30px;
+			}
+		}
+		.single-post__fixed-content {
+			p {
+				&:first-child {
+					&:first-letter {
+						@extend .h1;
+					}
+				}
+			}
+		}
+		.single-post__quote {
+			h2 {
+				width: 100%;
+				max-width: 430px;
+				margin: 0 auto .5rem;
+				span.small {
+					display: block;
+					padding-top: 30px;
+				}
+			}
+		}
+
+		article {
+			section {
+				&:last-child {
+					margin-bottom: 0 !important;
+				}
+			}
+		}
+	}
+}
+
+.home-page {
+	&__looks {
+		text-align: center;
+		h2 {
+			@extend .h3;
+			line-height: 45px;
+			text-transform: uppercase;
+		}
+
+		.owl-nav {
+			button {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				height: 100%;
+				background-color: transparent;
+				appearance: none;
+				border: none;
+				color: transparent;
+				font-size: 0;
+				width: 10%;
+				@include media-breakpoint-up(lg){
+					width: 20%;
+				}
+				&.owl-prev {
+					left: 0%;
+					@include media-breakpoint-down(md){
+						width: 20%;
+						background-image: url('../images/5445b29.png');
+						background-repeat: no-repeat;
+						background-position: center;
+					}
+					&:hover {
+						cursor: url('../images/5445b29.png'),pointer;
+					}
+				}
+				&.owl-next {
+					right: 0%;
+					@include media-breakpoint-down(md){
+						width: 20%;
+						background-image: url('../images/89c197d.png');
+						background-repeat: no-repeat;
+						background-position: center;
+					}
+					&:hover {
+						cursor: url('../images/89c197d.png'),pointer;
+					}
+				}
+			}
+		}
+	}
+}
+
+.misc-title {
+	@extend .h3;
+	text-transform: uppercase;
+	text-align: center;
+}

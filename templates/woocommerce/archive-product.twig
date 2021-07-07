@@ -1,0 +1,33 @@
+{% extends "templates/base.twig" %}
+
+{% block main_class %}shop-layout shop-layout--styles{% endblock %}
+{% block content %}
+
+	<section class="container container mb-6">
+		<div class="row row--more-margin-md">
+			<div class="col-sm-12 mb-4">
+				<h1 class="misc-title">
+					{{ __('Shop', 'fancysquares') }}
+				</h1>
+			</div>
+		</div>
+		<div class="row row--more-margin-md">
+			<div class="col-lg-9 col-md-12 mb-6 order-1">
+				<div class="row row--more-margin-md">
+					{% for product in products %}
+						{% include "woocommerce/partials/product-loop.twig" with {
+							post: product,
+							class: 'col-sm-6 col-md-4 post-preview post-preview--normal mb-4'
+						} %}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-12 mb-6 order-0">
+				<aside>
+					{{ sidebar }}
+				</aside>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+<section class="single-post__shop-style container mb-7">
+	<div class="row justify-content-center">
+		<div class="col-sm-12 col-md-9 col-lg-7 col-xl-6">
+			<h2 class="code-title mb-4">
+				{% if content_type.title %}
+					{{content_type.title}}
+				{% else %}
+					Shop The Look
+				{% endif %}
+			</h2>
+
+			{{content_type.code_block}}
+		</div>
+	</div>
+</section>

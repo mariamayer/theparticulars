@@ -1,0 +1,20 @@
+<article {{ function('post_class', class) }}>
+	<div class="post-preview__inner">
+		<header
+			class="mb-3"
+		>
+			<h2 class="post-preview__title post-preview__title--with-link">
+				<a href="{{ post.link }}" class="post-preview__link-block">
+					<span
+						class="post-preview__bg mb-4"
+						style="background-image: url({{post.thumbnail | resize('thumbnail')}});"
+					></span>
+					<span class="post-preview__title-text">
+						{{post.title}}
+					</span>
+				</a>
+			</h2>
+		</header>
+	</div>
+	{# {{post[0] | print_r}} #}
+</article>

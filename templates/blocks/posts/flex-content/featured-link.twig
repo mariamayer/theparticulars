@@ -1,0 +1,17 @@
+<section class="container mb-5 single-post__featured-link">
+	<div class="row justify-content-center">
+		<div class="col-sm-12 col-md-9 col-lg-7 col-xl-6">
+			{% set linkType = content_type.internal_or_external_link %}
+			{% set link = (linkType == 'internal') ? content_type.page_link : content_type.external_link %}
+			<a
+				href="{{link}}"
+				{% if linkType == 'external' %}
+					target="_blank"
+					rel="noopener noreferrer"
+				{% endif %}
+			>
+				{{content_type.text}}
+			</a>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,48 @@
+<section class="single-post__img-group single-post__img-group--one mb-7">
+	<div class="container">
+		<div class="row align-items-center justify-content-between">
+
+			<div class="col-sm-6 col-md-6">
+				<figure class="figure">
+					<img
+						src="{{TimberImage(content_type.image_left)}}"
+						class="figure-img img-fluid"
+						alt="">
+					{# <figcaption class="figure-caption">A caption for the above image.</figcaption> #}
+				</figure>
+			</div>
+
+			<div class="col-sm-6 col-md-5">
+				<figure class="figure figure--right-product">
+					<img
+						src="{{TimberImage(content_type.image_right)}}"
+						class="figure-img img-fluid"
+						alt="">
+						{% if content_type.is_there_a_product == 'yes' %}
+							<div class="figure__product" data-js="single-product-click">
+								<span class="figure__product-title">
+									{{content_type.product_title}} <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i>
+								</span>
+								{% if content_type.product_sub_title %}
+									<span class="figure__product-sub-title">
+										{{content_type.product_sub_title}}
+									</span>
+								{% endif %}
+								<a
+									href="{{content_type.product_link}}"
+									target="_blank"
+									aria-label="{{content_type.product_title}} product"
+									class="figure__product-link"
+									style="background-image: url({{TimberImage(content_type.product_image)}});"
+								>
+								</a>
+							</div>
+						{% endif %}
+
+					{# <figcaption class="figure-caption">A caption for the above image.</figcaption> #}
+				</figure>
+			</div>
+
+		</div>
+	</div>
+</section>

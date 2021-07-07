@@ -1,0 +1,74 @@
+.featured-post {
+	overflow: hidden;
+	&__bg-img {
+		@include min-vh;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		@include media-breakpoint-up(lg){
+			max-width: 50%;
+		}
+		@include media-breakpoint-up(xl){
+			max-width: 43%;
+		}
+	}
+
+	&__mini-img {
+		background-size: cover;
+		background-position: center;
+		position: absolute;
+		right: 0;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		@include media-breakpoint-down(md){
+			width: 171px;
+			height: 241px;
+		}
+		@include media-breakpoint-up(lg){
+			width: 219px;
+			height: 300px;
+		}
+		@include media-breakpoint-up(xl){
+			right: -250px;
+			left: auto;
+			width: 325px;
+			height: 446px;
+		}
+	}
+
+	&__cat {
+		@extend .small;
+		display: block;
+	}
+
+	&__title {
+		a {
+			@extend .h1;
+			color: $black;
+		}
+	}
+
+	&__read-more {
+		text-align: right;
+		a {
+			@extend .small;
+			color: $black;
+		}
+	}
+
+	&__content {
+		padding: 0 30px;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		@include media-breakpoint-up(lg){
+			padding: 75px;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		@include media-breakpoint-up(xl){
+			max-width: 33%;
+		}
+	}
+}

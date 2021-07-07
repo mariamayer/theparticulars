@@ -1,0 +1,152 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+	{% include "blocks/posts/featured-interview.twig" %}
+
+	<div class="container mb-7">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h1 class="h1">
+					Interviews
+				</h1>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container mb-7">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<nav>
+					<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+						<a
+							class="nav-item nav-link active"
+							id="sort-by-name-tab"
+							data-toggle="tab"
+							href="#sort-by-name" role="tab" aria-controls="sort-by-name" aria-selected="true">
+							<span>
+								Sort by Name
+							</span>
+						</a>
+						<a
+							class="nav-item nav-link"
+							id="sort-by-field-tab"
+							data-toggle="tab"
+							href="#sort-by-field" role="tab" aria-controls="sort-by-field" aria-selected="false">
+							<span>
+								Sort by Field
+							</span>
+						</a>
+					</div>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+		<div class="tab-pane fade show active" id="sort-by-name" role="tabpanel" aria-labelledby="sort-by-name-tab">
+			<div class="container mb-7 pt-5">
+				<div class="row">
+
+					{% for category in INTERVIEW_ALPHABET_GROUPS %}
+
+
+							<div class="col-sm-6 col-md-4">
+								<h2 class="h1 h1--plus">
+									{{category.name}}
+								</h2>
+							</div>
+							{% for post in category.get_posts('numberposts=50&meta_key=interviewee_name&orderby=meta_value&order=ASC') %}
+								<article class="col-sm-6 col-md-4 interview-preview--basic mb-6">
+									<a
+										href="{{post.link}}"
+										aria-lable="{{post.title}}"
+										style="background-image: url({{post.thumbnail.src}});"
+										class="interview-preview__featured-img mb-4"
+									>
+									</a>
+									<h2 class="h2">
+										<a href="{{post.link}}">
+											{% if post.interviewee_name %}
+												{{post.interviewee_name}}
+											{% else %}
+												{{post.title}}
+											{% endif %}
+										</a>
+									</h2>
+								</article>
+
+							{% endfor %}
+
+
+
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="sort-by-field" role="tabpanel" aria-labelledby="sort-by-field-tab">
+
+			<div class="container mb-7 pt-5">
+				<div id="accordion" class="category-accordion">
+					{% for category in INTERVIEW_MISC_CATEGORIES %}
+
+						<div class="card-header" id="{{category.ID}}headingOne">
+
+							<button class="btn btn-link h2 collapsed" data-toggle="collapse" data-target="#collapse{{category.ID}}" aria-expanded="true" aria-controls="collapse{{category.ID}}">
+								{{category.name}}
+								<span>
+									<img
+										src="{{ theme.link }}/public/images/circle-plus.png"
+										alt=""
+										class="img-fluid plus">
+										<img
+										src="{{ theme.link }}/public/images/circle-minus.png"
+										alt=""
+										class="img-fluid minus">
+								</span>
+							</button>
+						</div>
+
+						<div id="collapse{{category.ID}}" class="collapse" aria-labelledby="{{category.ID}}headingOne" data-parent="#accordion">
+							<div class="row">
+								{% for post in category.get_posts(30) %}
+
+									<article class="col-sm-6 col-md-4 interview-preview--basic mb-6">
+										<a
+											href="{{post.link}}"
+											aria-lable="{{post.title}}"
+											style="background-image: url({{post.thumbnail.src}});"
+											class="interview-preview__featured-img mb-4"
+										>
+										</a>
+										<h2 class="h2">
+											<a href="{{post.link}}">
+												{% if post.interviewee_name %}
+													{{post.interviewee_name}}
+												{% else %}
+													{{post.title}}
+												{% endif %}
+											</a>
+										</h2>
+									</article>
+
+								{% endfor %}
+							</div>
+						</div>
+
+					{% endfor %}
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+<article {{ function('post_class', 'col-sm-12 interview-preview mb-7') }}>
+	<div class="row">
+		<a
+			class="col-sm-12 col-lg-6 {{orderClassA}} interview-preview__bg"
+			href="{{post.link}}"
+			style="background-image: url({{post.thumbnail}});"
+			aria-label="{{post.title}}"
+		>
+			{{orderClass}}
+		</a>
+		<div class="col-sm-12 col-lg-6 {{orderClassB}} interview-preview__content">
+			<header>
+				<span aria-label="post category interview" class="interview-preview__small mb-4-lg">
+					Interviews
+				</span>
+				<h2 class="interview-preview__title mb-4"><a href="{{ post.link }}">{{ post.title }}</a></h2>
+				{# {% include "blocks/posts/entry-meta.twig" %} #}
+			</header>
+			<div class="entry-summary">
+				{{ post.post_excerpt }}
+
+				<div class="text-right pt-4">
+					<a
+						href="{{ post.link }}"
+						class="post-preview__read-more"
+					>
+						Read More
+					</a>
+				</div>
+			</div>
+
+			{% if post.shopping_preview %}
+				<div class="interview-preview__shopping">
+					<h2>
+						<span>
+							Shop The Look
+						</span>
+					</h2>
+					{{post.shopping_preview}}
+				</div>
+			{% endif %}
+
+		</div>
+	</div>
+</article>

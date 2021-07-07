@@ -1,0 +1,67 @@
+{% set newer_post = function('get_next_post', TRUE) %}
+{% set older_post = function('get_previous_post', TRUE) %}
+
+{# {% set newerPostImage = function('get_field','image_preview', newer_post, 'cat-med') %}
+{% set olderPostImage = function('get_field','image_preview', older_post) %} #}
+
+<section class="single-post__pagination mb-7">
+
+	<div class="container">
+
+		<div class="row justify-content-between">
+
+			<div class="col-sm-12 col-md-4 col-xl-3 mb-4 prev">
+
+				{# previous #}
+				{% if newer_post  %}
+
+					{% set newerTitle = function('get_the_title', newer_post) %}
+					<a class="pagination-link grid-x grid-x--fullwidth" href="{{function('get_permalink', newer_post)}}" >
+							<span class="cell cell--post-title">
+								<span class="basic-title mb-4-lg">
+									{% autoescape %}
+										PREVIOUS Post
+									{% endautoescape %}
+								</span>
+								<span class="title">
+										{{ newerTitle }}
+								</span>
+							</span>
+
+					</a>
+
+
+				{% endif %}
+			</div>
+
+			{# next #}
+			<div class="col-sm-12 col-md-4 col-xl-3 mb-4">
+
+				{% if older_post  %}
+
+						{% set olderTitle = function('get_the_title', older_post) %}
+
+						<a href="{{function('get_permalink', older_post)}}" class="pagination-link {{ PAGINATION_CLASS }} grid-x grid-x--fullwidth">
+
+							<span class="cell cell--post-title">
+								<span class="basic-title mb-4-lg">
+									{% autoescape %}
+										Next Post
+									{% endautoescape %}
+								</span>
+								<span class="title">
+										{{ olderTitle }}
+								</span>
+							</span>
+
+						</a>
+
+
+				{% endif %}
+			</div>
+
+		</div>
+
+	</div>
+
+ </section>

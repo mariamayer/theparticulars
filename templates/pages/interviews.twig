@@ -1,0 +1,39 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+
+    {# {% if type %}
+        <h1>{{ type.name }}</h1>
+        <p>{{ type.description }}</p>
+
+        {% if type.children %}
+            <ul>
+                {% for term in type.children %}
+                    <li>
+                        <a href="{{term.link}}">{{term.title}}</a>
+                        <p>{{ term.description }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+
+
+
+
+    {% for post in posts if not type_children %}
+        <article class="block-white" id="{{ post.slug }}">
+            <h2>
+                POST : <a href="{{ post.link }}"> {{ post.name }}</a>
+            </h2>
+        </article>
+    {% endfor %} #}
+
+{% endblock %}
+
+{% block sidebar %}
+
+    {% include "blocks/sidebar.twig" %}
+
+{% endblock %}

@@ -1,0 +1,137 @@
+.featured-interview {
+	background-color: $beige;
+	max-width: 100%;
+	overflow: hidden;
+	// .row {
+
+	// }
+	&__bg {
+		background-size: cover;
+		background-position: center;
+		@include media-breakpoint-up(md){
+			min-height: 100vh;
+		}
+		@include media-breakpoint-up(md){
+			min-height: 100vh;
+		}
+	}
+
+	&__person {
+		text-align: center;
+		background-size: cover;
+		background-position: center;
+		@include media-breakpoint-up(md){
+			padding: 50px 30px;
+		}
+		@include media-breakpoint-up(lg){
+			// padding: 100px 30px 200px;
+		}
+		h2 {
+			@extend .h1;
+		}
+	}
+
+	&__misc {
+		@extend .small;
+		display: block;
+	}
+
+	&__permalink {
+		display: inline-block;
+		position: relative;
+		-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+		filter: grayscale(100%);
+		transition: filter .25s ease-out;
+		&:hover {
+			-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+			filter: grayscale(0);
+		}
+		span {
+			color: $black;
+			right: 40px;
+			height: 88px;
+			bottom: 40px;
+			top: auto;
+			@include media-breakpoint-up(xl){
+				right: -60px;
+			}
+		}
+
+		img {
+			max-width: 500px;
+			width: 100%;
+		}
+	}
+
+	&--pagination {
+		.featured-interview__person {
+			background-image: none !important;
+		}
+		@include media-breakpoint-down(sm){
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
+	}
+
+	&--normal {
+		.featured-interview__person {
+			background-image: none !important;
+		}
+		@include media-breakpoint-down(sm){
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
+	}
+
+	&--single-post {
+		.featured-interview__person {
+			@include media-breakpoint-up(md){
+				background-image: none !important;
+			}
+			@include media-breakpoint-down(sm){
+				@include min-vh;
+				position: relative;
+			}
+		}
+		.featured-interview__permalink {
+			@include media-breakpoint-down(sm){
+				@include centerer;
+				top: 43%;
+				width: 100%;
+				max-width: 60%;
+			}
+		}
+		.header__featured-link-read {
+			display: none;
+		}
+	}
+}
+
+.featured-interview__header {
+	@include media-breakpoint-down(sm){
+		text-align: center;
+		padding: 0 10px;
+		margin-bottom: 45px;
+		width: 100%;
+		padding: 0 10px;
+		h1 {
+			width: 100%;
+			max-width: 548px;
+			margin: 0 auto;
+		}
+	}
+}
+
+.single-post article > header {
+	text-align: center;
+	padding: 0 10px;
+	margin-bottom: 45px;
+	width: 100%;
+	padding: 0 10px;
+	h1 {
+		width: 100%;
+		max-width: 548px;
+		margin: 0 auto;
+	}
+
+}

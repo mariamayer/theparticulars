@@ -1,0 +1,37 @@
+@import "common/variables";
+
+@import "settings/settings";
+@import '~bootstrap/scss/bootstrap.scss';
+
+@import '~font-awesome/scss/font-awesome';
+
+@import '~aos/dist/aos.css';
+
+@import "common/mixins";
+@import "common/type";
+@import "common/global";
+
+// @import "components/buttons";
+// @import "components/comments";
+// @import "components/reveal";
+@import "components/forms";
+@import "components/grid";
+// @import "components/wp-classes";
+@import "components/owl";
+@import "components/instagram-list";
+@import "components/interview-preview";
+@import "components/post-preview";
+@import "components/featured-post";
+@import "components/figure";
+@import "components/newsletter";
+@import "components/featured-shop";
+@import "components/featured-interview";
+@import "components/shop";
+@import "components/manually-added";
+
+@import "layouts/header";
+@import "layouts/sidebar";
+@import "layouts/footer";
+@import "layouts/pages";
+@import "layouts/posts";
+@import "layouts/tinymce";

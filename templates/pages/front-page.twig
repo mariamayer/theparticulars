@@ -1,0 +1,98 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+	<article>
+
+		{% include "blocks/posts/featured-post.twig" with {
+				post: FEATURED_POST
+			}
+		%}
+
+		<section class="container container mb-6">
+			<div class="row row--more-margin-md">
+				<div class="col-sm-12 mb-6">
+					<h2 class="misc-title">
+						Recent Posts
+					</h2>
+				</div>
+				{% for post in recentPostsPartOne %}
+					{% include "blocks/posts/content.twig" with {
+							post: post,
+							class: 'col-sm-12 col-md-4 post-preview post-preview--normal mb-4'
+						}
+					%}
+				{% endfor %}
+			</div>
+		</section>
+
+		<section class="container container--nested-row-bg">
+			<div class="row">
+				{% for post in INTERVIEWS_HOME %}					
+					{% set itemClassA = loop.index is odd ? '': 'order-sm-0 order-lg-1' %}
+					{% set itemClassB = loop.index is odd ? '': 'order-sm-1 order-lg-0' %}
+					{% include "blocks/posts/content-interview2.twig" with {
+							post: post,
+							class: 'interviews-news',
+							orderClassA:itemClassA,
+							orderClassB:itemClassB
+						}
+					%}
+				{% endfor %}
+			</div>
+		</section>
+
+		<section id="shop" class="home-page__looks mb-7 pb-7 pt-6">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 mb-5">
+						<h2>
+							{# {{options.title_favorite_looks}} #}
+							{{ REWARDS_STYLE_TITLE }}
+						</h2>
+					</div>
+				</div>
+			</div>
+
+			{% filter shortcodes %}
+				{{ REWARDS_STYLE_TITLE_SC }}
+			{% endfilter %}
+
+			{# <div class="owl-carousel owl-theme owl-feature-insta">
+				{% for post in INSTA_SHOP_FEED %}
+					{% set SHOP_FIELD = function('get_field', 'product_widget_normal', post.ID) %}
+					<div class="item insta-block insta-block--shop" style="background-image: url({{function('get_the_post_thumbnail_url', post.ID, 'full')}});">
+						{{post.post_content}}
+
+						{% if SHOP_FIELD %}
+							<div class="post-preview__shop">
+								<span class="insta-block__product-title post-preview__product-title" data-js="shop-products-dynamic">
+									Shop The Look <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i>
+								</span>
+
+								<div class="insta-block__items post-preview__items">
+									{{SHOP_FIELD}}
+								</div>
+							</div>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div> #}
+
+		</section>
+
+		<section class="container">
+			<div class="row row row--more-margin-md mb-7">
+				{% for post in recentPostsPartTwo %}
+					{% include "blocks/posts/content.twig" with {
+							post: post,
+							class: 'col-sm-12 col-md-4 post-preview post-preview--normal mb-4'
+						}
+					%}
+				{% endfor %}
+			</div>
+		</section>
+
+	</article>
+
+{% endblock %}

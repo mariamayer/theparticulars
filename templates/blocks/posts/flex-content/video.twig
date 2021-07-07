@@ -1,0 +1,19 @@
+<section class="single-post__light-box single-post__light-box--basic mb-7">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-sm-12 text-center">
+				{% if content_type.this_or_that == 'MP4' %}
+					<div class="embed-responsive embed-responsive-16by9">
+						<video controls class="embed-responsive-item">
+							<source src="{{content_type.video_src}}" type="video/mp4">
+						</video>
+					</div>
+				{% else %}
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{content_type.iframe_url}}"></iframe>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>

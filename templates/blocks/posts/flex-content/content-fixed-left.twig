@@ -1,0 +1,37 @@
+<section class="single-post__fixed-content single-post__fixed-content--img-left container mb-6">
+	<div class="row">
+		<div class="col-sm-12 col-md-7 content-left align-self-start sticky-top">
+			<figure class="figure figure--left-product {% if content_type.is_there_a_product == 'yes' %}figure--has-product-left{% endif %}">
+				<img
+					src="{{TimberImage(content_type.image_left_fixed)}}"
+					class="figure-img img-fluid"
+					alt="">
+					{% if content_type.is_there_a_product == 'yes' %}
+						<div class="figure__product" data-js="single-product-click">
+							<span class="figure__product-title">
+								{{content_type.product_text}} <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i>
+							</span>
+							{% if content_type.product_sub_title %}
+								<span class="figure__product-sub-title">
+									{{content_type.product_sub_title}}
+								</span>
+							{% endif %}
+							<a
+								href="{{content_type.product_link}}"
+								target="_blank"
+								aria-label="{{content_type.product_text}} product"
+								class="figure__product-link"
+								style="background-image: url({{TimberImage(content_type.product_image)}});"
+							>
+							</a>
+						</div>
+					{% endif %}
+
+				{# <figcaption class="figure-caption">A caption for the above image.</figcaption> #}
+			</figure>
+		</div>
+		<div class="col-sm-12 col-md-5 content-right">
+			{{content_type.content}}
+		</div>
+	</div>
+</section>

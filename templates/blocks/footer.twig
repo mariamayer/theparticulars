@@ -1,0 +1,91 @@
+{# main shop item #}
+{% include 'blocks/footer/featured-shop.twig' %}
+{# newsletter #}
+{% include 'blocks/footer/newsletter.twig' %}
+
+<footer class="content-info footer footer--main">
+	{# intagram #}
+	{% include 'blocks/footer/instagram.twig' %}
+
+    <div class="footer__misc container">
+        <div class="row justify-content-between">
+			<div class="col-sm-12 col-md-4 mb-4">
+				<a class="brand" href="{{ site.url }}">
+					<img src="{{ theme.link }}/public/images/logo.png" alt="{{ site.name }}" class="header__site-logo img-fluid">
+				</a>
+			</div>
+
+			<div class="col-sm-12 col-md-6">
+				<ul class="footer__menu">
+
+					{% if function('is_page_template','tmpl-landing.php') %}
+
+						<li>
+							<a class="header__social-link" href="https://www.instagram.com/the.particulars/" target="_blank">
+								instagram
+							</a>
+						</li>
+						<li>
+							<a class="header__social-link" href="" target="_blank">
+								facebook
+							</a>
+						</li>
+					{% else %}
+
+						{% for item in footer_menu.get_items %}
+							<li class="{{ item.classes | join(' ') }} footer__list-item">
+								<a class="footer__main-link" href="{{ item.get_link }}">
+									{{ item.title }}
+								</a>
+							</li>
+						{% endfor %}
+						<li>
+							<a class="header__social-link" href="https://www.instagram.com/the.particulars/" target="_blank">
+								instagram
+							</a>
+						</li>
+						<li>
+							<a class="header__social-link" href="https://www.facebook.com/hellotheparticulars" target="_blank">
+								facebook
+							</a>
+						</li>
+						<li>
+							<a class="header__social-link" href="https://www.pinterest.com/hellotheparticulars/" target="_blank">
+								pinterest
+							</a>
+						</li>
+						<li>
+							<a class="header__social-link" href="#" data-acsb-custom-trigger="true">
+								accessibility
+							</a>
+						</li>
+					{% endif %}
+				</ul>
+
+			</div>
+
+		</div>
+
+    </div>
+
+	<div
+		class="container container--copy-right"
+	>
+		<div class="row footer__copy-right-row">
+			<div
+				class="col-sm-12 col-md-6"
+			>
+
+				<span class="copyright">&copy; {{ 'now'|date('Y') }} {{site.name}} • All rights reserved</span>
+			</div>
+			<div
+				class="col-sm-12 col-md-6 text-right"
+			>
+				<a href="https://projectmplus.com/" target="_blank" rel="noopener noreferrer">
+					DESIGN & DEVELOPMENT BY PROJECT M PLUS
+				</a>
+			</div>
+		</div>
+
+	</div>
+</footer>

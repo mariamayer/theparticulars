@@ -1,0 +1,76 @@
+{% if posts.pagination.pages is not empty %}
+<nav aria-label="Page navigation example">
+	<ul class="pagination justify-content-center">
+		{# First #}
+		{% if posts.pagination.pages|first and posts.pagination.pages|first.current != true %}
+			<li class="page-item">
+				<a class="page-link" href="{{ posts.pagination.pages|first.link }}">First</a>
+			</li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" href="#" tabindex="-1">First</a>
+			</li>
+		{% endif %}
+		{# prev #}
+		{% if posts.pagination.prev %}
+			<li class="page-item">
+				<a class="page-link" href="{{ posts.pagination.prev.link }}" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+					<span class="sr-only">Previous</span>
+				</a>
+			</li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" href="#" aria-label="Previous"  tabindex="-1">
+					<span aria-hidden="true">&laquo;</span>
+					<span class="sr-only">Previous</span>
+				</a>
+			</li>
+		{% endif %}
+
+
+
+		{# Pages #}
+		{% for page in posts.pagination.pages %}
+			{% if page.link %}
+				<li class="page-item">
+					<a href="{{ page.link }}" class="page-link {{ page.class }}">{{ page.title }}</a>
+				</li>
+			{% else %}
+				<li class="page-item active">
+
+					<a class="page-link" href="#">{{ page.title }} <span class="sr-only">(current)</span></a>
+				</li>
+			{% endif %}
+		{% endfor %}
+
+		{# next #}
+		{% if posts.pagination.next %}
+			<li class="page-item">
+				<a class="page-link" href="{{ posts.pagination.next.link }}" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+					<span class="sr-only">Next</span>
+				</a>
+			</li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" href="#" aria-label="Next"  tabindex="-1">
+					<span aria-hidden="true">&raquo;</span>
+					<span class="sr-only">Next</span>
+				</a>
+			</li>
+		{% endif %}
+
+		{# Last #}
+		{% if posts.pagination.pages|last and posts.pagination.pages|last.current != true %}
+			<li class="page-item">
+				<a class="page-link" href="{{ posts.pagination.pages|last.link }}">Last</a>
+			</li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" href="#" tabindex="-1">Last</a>
+			</li>
+		{% endif %}
+	</ul>
+</nav>
+{% endif %}

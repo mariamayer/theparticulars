@@ -1,0 +1,15 @@
+<section class="single-post__carousel mb-7">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-sm-10 col-lg-12 col-carousel">
+				<div class="owl-carousel owl-carousel--single-post owl-theme">
+					{% for item in content_type.images %}
+						<div class="item">
+							<img src="{{TimberImage(item.image)}}" alt="">
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

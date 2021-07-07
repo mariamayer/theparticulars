@@ -1,0 +1,80 @@
+.interview-preview {
+	background: $white;
+	&__bg {
+		background-position: center;
+		background-size: cover;
+		@include media-breakpoint-down(md){
+			@include aspect-ratio(4,3)
+		}
+	}
+	&__small {
+		@extend .small;
+		display: block;
+	}
+	&__title {
+		@extend .h1;
+		a {
+			color: $black;
+		}
+	}
+	&__content {
+		padding: 30px;
+		@include media-breakpoint-up(lg){
+			padding: 50px;
+		}
+		@include media-breakpoint-up(xl){
+			padding: 50px;
+		}
+	}
+
+	&__shopping {
+		padding-top: 40px;
+		h2 {
+			@extend .small;
+			background-color: $white;
+			position: relative;
+			&:after {
+				@include centerer;
+				background-color: $black;
+				content:'';
+				height: .5px;
+				width: 100%;
+				display: block;
+				z-index: 0;
+			}
+			span {
+				background-color: $white;
+				position: relative;
+				z-index: 1;
+				padding-left: 30px;
+				padding-right: 30px;
+				display: inline-block;
+			}
+		}
+	}
+
+	&__featured-img {
+		@include aspect-ratio(3,4);
+		display: block;
+		background-size: cover;
+		background-position: center;
+	}
+
+	&--basic {
+		background: none;
+		text-align: center;
+		a {
+			color: $black;
+		}
+
+		.interview-preview__featured-img {
+			-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+			  filter: grayscale(100%);
+			  transition: filter .25s ease-out;
+			  &:hover {
+				-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+			  	filter: grayscale(0);
+			  }
+		}
+	}
+}

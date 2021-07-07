@@ -1,0 +1,70 @@
+<section class="single-post__recipe mb-7">
+	<div class="container">
+		<div class="row">
+			<div class="col text-center">
+				<h2 class="h2 single-post__recipe-title">
+					{{ content_type.title }}
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div class="container single-post__recipe-time d-print-none">
+		<div class="row">
+			<div class="col">
+				<p>
+					Prep Time:
+				</p>
+				<span>
+					{{ content_type.prep_time}}
+				</span>
+			</div>
+			<div class="col">
+				<p>
+					Total Time:
+				</p>
+				<span>
+					{{ content_type.total_time}}
+				</span>
+			</div>
+			<div class="col">
+				<p>
+					Serves:
+				</p>
+				<span>
+					{{ content_type.serves}}
+				</span>
+			</div>
+		</div>
+	</div>
+	<table class="table d-none d-print-block recipe-table">
+		<thead>
+			<tr>
+			<th scope="col">Prep Time:</th>
+			<th scope="col">Total Time:</th>
+			<th scope="col">Serves:</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row">{{ content_type.prep_time}}</th>
+				<td>{{ content_type.total_time}}</td>
+				<td>{{ content_type.serves}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="single-post__recipe-content">
+					<button class="single-post__recipe-content-print btn" data-js="print-recipe">Print this recipe</button>
+					{{ content_type.content}}
+				</div>
+				<div class="single-post__recipe-credits">
+					<p>
+						{{ content_type.credits}}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,39 @@
+<article {{ function('post_class', class) }}>
+	<div class="post-preview__inner">
+		<div class="post-preview__img">
+			{% if post._product_url %}
+				{% set product_link = post._product_url %}
+				{% set link_target = 'target="_blank"' %}
+			{% else %}
+				{% set product_link = post.link %}
+				{% set link_target = '' %}
+			{% endif %}
+			<a class="post-preview__link post-preview__link-bg" href="{{ product_link }}" style="background-image: url({{ post.thumbnail | resize('thumbnail') }});" aria-label="{{ post.title }}" {{ link_target }}></a>
+			{% if post.shopping_preview %}
+				<div class="post-preview__shop">
+					<span class="post-preview__product-title" role="button" data-js="shop-products">
+						Shop The Look <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i>
+					</span>
+
+					<div class="post-preview__items">
+						{{ post.shopping_preview }}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+		<header class="mb-3">
+			<h2 class="post-preview__title post-preview__title--with-link">
+				<a href="{{ product_link }}" {{ link_target }}>{{ post.title }}</a>
+				<div class="small" style="font-size: 12px;">{{ post.price }}</div>
+			</h2>
+		</header>
+		{% if post.post_excerpt %}
+			<div class="post-preview__summary mb-4">
+				{{ post.post_excerpt }}
+			</div>
+		{% endif %}
+		<div class="post-preview__link buy-product-link mb-4">
+			{% do action('woocommerce_after_shop_loop_item') %}
+		</div>
+	</div>
+</article>

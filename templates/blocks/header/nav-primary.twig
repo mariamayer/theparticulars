@@ -1,0 +1,75 @@
+{% if menu %}
+
+	<nav class="header__nav" tabindex="-1">
+	    <ul class="header__menu" tabindex="-1">
+	        {% for item in menu %}
+	            <li class="{{ item.classes | join(' ') }} header__list-item">
+	                <a class="header__main-link" href="{{ item.get_link }}" tabindex="-1">
+
+						<span class="header__link-title">
+	                		{{ item.title }}
+	                	</span>
+
+
+	                </a>
+					{% if item.title == 'Accessories' %}
+						<a
+							href="{{FS_FIRST_ACCESSORY[0].link}}"
+							class="header__featured-link read-more-cursor"
+							style="background-image:url({{FS_FIRST_ACCESSORY[0].thumbnail.src | resize('thumbnail')}});"
+							tabinde="-1"
+						>
+							{# <span class="header__featured-link-read" aria-hidden="true">
+								Read<br/> Post
+							</span> #}
+						</a>
+					{% endif %}
+
+					{% if item.title == 'Interviews' %}
+						<a
+							class="header__featured-link read-more-cursor"
+							href="{{FS_FIRST_INTERVIEW[0].link}}"
+							style="background-image:url({{FS_FIRST_INTERVIEW[0].thumbnail.src | resize('thumbnail')}});"
+							tabinde="-1"
+						>
+							{# <span class="header__featured-link-read" aria-hidden="true">
+								Read<br/> Post
+							</span> #}
+						</a>
+					{% endif %}
+
+					{# {{item.ID}} #}
+	                {# {% include "blocks/header/nav-primary.twig" with {'menu': item.get_children} %} #}
+	            </li>
+	        {% endfor %}
+	    </ul>
+
+		<form role="search" method="get" id="searchform" class="searchform" action="{{site.link}}">
+			<div>
+				<label class="screen-reader-text small" for="s">Search:</label>
+				<input type="text" value="{{ function('get_search_query') }}" name="s" id="s" />
+				<input type="submit" id="searchsubmit" value="Search" class="d-none" />
+			</div>
+		</form>
+
+		<ul class="social-list">
+			<li>
+				<a tabindex="-1" class="header__social-link" href="https://www.instagram.com/the.particulars/" target="_blank">
+					instagram
+				</a>
+			</li>
+			<li>
+				<a tabindex="-1" class="header__social-link" href="https://www.facebook.com/hellotheparticulars" target="_blank">
+					facebook
+				</a>
+			</li>
+			<li>
+				<a tabindex="-1" class="header__social-link" href="https://www.pinterest.com/hellotheparticulars/" target="_blank">
+					pinterest
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+
+{% endif %}

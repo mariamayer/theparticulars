@@ -1,0 +1,38 @@
+<section class="featured-post mb-7">
+
+	<div class="row align-items-center justify-content-between">
+
+		<div
+			class="col-sm-12 featured-post__bg-img featured-post__bg-img--adjusted"
+			style="background-image:url({{ TimberImage(post.image_id) }});"
+		>
+			<div
+				class="featured-post__mini-img"
+				style="background-image:url({{ TimberImage(post.image_id_center) }})">
+			</div>
+		</div>
+
+		<div class="col-sm-12 col-lg-6 featured-post__content">
+			<span class="featured-post__cat mb-4">
+				{{post.main_category}}
+			</span>
+			<h2 class="featured-post__title mb-5">
+				<a href="{{post.link}}">
+					{{post.title}}
+				</a>
+			</h2>
+
+			<p class="mb-4">
+				{{post.excerpt}}
+			</p>
+
+			<div class="featured-post__read-more">
+				<a href="{{post.link}}">
+					Read More
+				</a>
+			</div>
+
+		</div>
+
+	</div>
+</section>
