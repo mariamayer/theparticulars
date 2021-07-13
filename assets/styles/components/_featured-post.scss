@@ -72,3 +72,45 @@
 		}
 	}
 }
+
+.top5 {
+	.featured-top-container {
+		margin: 40px 0;
+		background-color: #e2eaef;
+		.product {
+			padding: 15px;
+			img {
+				max-width: 100%;
+			}
+		}
+	}
+	
+	.post-image {
+		img {
+			max-width: 100%;
+		}
+	
+		.product-data {
+			position: absolute;
+			bottom: 0;
+			left: calc(100% + 20px);
+			width: 200px;
+			@include media-breakpoint-down(sm){
+				position: relative;
+				left: 0;
+				width: 100%;
+				text-align: center;
+			}
+		}
+	}
+
+	.single-post__intro-img {
+		margin-bottom: 0!important;
+		margin-top: -20%;
+	}
+
+	.post-content {
+		width: 100%;
+		max-width: 650px;
+	}
+}

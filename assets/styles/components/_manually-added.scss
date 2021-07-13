@@ -114,6 +114,10 @@ body.scrolling .header__site-logo {
 	max-width: 218px;
 }
 
+.header__menu-btn.menu-link {
+	right: 70px;
+}
+
 .header__menu-btn {
 	position: fixed;
 	max-width: 45px;
@@ -239,14 +243,28 @@ body.scrolling .header__menu-btn {
 
 .header .searchform input {
 	background-color: #fff;
-	border-color: #dcd7d7;
-	border-width: 1px;
-	box-shadow: 0px 0px 1px 1px #dcd7d7;
 	padding: 1px 7px;
-	border: 1px solid #dcd7d7;
-	border-radius: 2px;
+	border: 0;
 	width: 100%;
-	max-width: 199px;
+	height: 38px;
+	font-family: acme-gothic-extrawide,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 9px;
+    line-height: 17px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.header .searchform div {
+	border: 1px solid #000;
+	position: relative;
+}
+
+.searchform .btn-search {
+	position: absolute;
+	right: 0;
+	top: 0;
 }
 
 @media (min-width: 1024px) {
@@ -1222,4 +1240,169 @@ body#tinymce {
 html, body.mce-content-body {
 	/* Fixes Post Editor */
 	height: inherit !important;
+}
+
+/* Newsletter Modal */
+#myModal {
+	max-width: 100%;
+}
+
+#myModal .modal-dialog{
+	max-width: 100%;
+	width: 100%;
+	bottom: 0;
+	position: absolute;
+	margin: auto;
+}
+
+#myModal .modal-content {
+	padding: 90px 0 40px 0;
+}
+
+#searchModal .btn-plain ,
+#myModal .btn-plain {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#myModal #field_2_2 input {
+    border-bottom: 0;
+}
+
+#myModal .gform_body input {
+    width: 100%;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: acme-gothic-extrawide,sans-serif;
+    font-size: 10px;
+}
+
+#myModal .gform_footer .gform_button {
+	padding: 0;
+	border: 0;
+	width: 100%;
+	text-align: right;
+	text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: acme-gothic-extrawide,sans-serif;
+}
+
+#myModal .text-center span {
+	text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: acme-gothic-extrawide,sans-serif;
+	font-size: 12px;
+}
+
+#myModal h2 {
+	font-family: orpheuspro, serif;
+  font-weight: 400;
+	font-size: 55px;
+  line-height: 65px;
+}
+
+.acme-text {
+	font-family: acme-gothic-extrawide,sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 9px;
+	line-height: 17px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: #000;
+}
+
+.shop-link {
+	line-height: 40px;
+	left: 35px;
+	position: absolute;
+}
+
+/* Search form */
+.header .searchform {
+    width: 80%;
+}
+
+.searchform label {
+	padding-right: 10px;
+}
+
+.searchform input {
+	background-color: #fff;
+	padding: 1px 7px;
+	border: 0;
+	width: 100%;
+	max-width: 100%;
+	height: 38px;
+	font-family: acme-gothic-extrawide,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 9px;
+    line-height: 17px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.header .searchform input {
+	max-width: 100%;
+	box-shadow: none;
+	border: 0;
+}
+
+
+.searchform div {
+	border: 1px solid #000;
+	position: relative;
+}
+
+.searchform .btn-search {
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: #000;
+}
+
+.searchform .btn-search:hover {
+	text-decoration: none
+}
+
+/* Search Modal */
+#searchModal .modal-dialog{
+    margin: 0;
+    max-width: 100%;
+}
+
+#searchModal .modal-content {
+    width: 100%;
+    padding: 50px 0;
+    background: rgba(255,255,255,0.91);
+    border: 0;
+}
+
+#searchModal .searchform input {
+	background: transparent
+}
+
+/* Shop Menu */
+.shop-menu {
+	background: #e5eaee;
+	padding: 15px;
+}
+
+.shop-menu .link {
+	padding: 0 15px;
+}
+
+@media only screen and (max-width: 600px) {
+	.header__menu-btn.menu-link {
+    	right: 40px;
+	}
+	
+	.shop-link {
+		line-height: 30px;
+		left: 20px;
+	}
+
 }

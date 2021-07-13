@@ -1,0 +1,73 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {% for post in posts %}
+    <div class="container-fluid p-0 top5">
+        <div class="row m-0 align-items-center">
+            <div class="col-md-5 p-0 post-image">
+                <img src="{{TimberImage(FEATURED_PRODUCT_FIRST[0].product_image).src|resize(800, 'center')}}" />
+                <div class="product-data">
+                    <h6 class="f6 mt1 mb0 lh-copy normal acme-text">{{FEATURED_PRODUCT_FIRST[0].product_brand}}</h6>
+                    <h2 class="post-preview__title post-preview__title--with-link">
+                        <a href="{{FEATURED_PRODUCT_FIRST[0].product_link}}" target="_blank">{{FEATURED_PRODUCT_FIRST[0].product_name}}</a>
+                        <div class="small"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>{{FEATURED_PRODUCT_FIRST[0].price}}</bdi></span></div>
+                    </h2>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <span class="featured-interview__misc mb-4 px-4">
+					Top five
+				</span>
+                <header class="single-post__title-header px-4">
+					<h1 class="entry-title text-left mx-0">{{ post.title }}</h1>
+				</header>
+                <div class="px-4 mt-3 post-content">{{ post.content }}</div>
+            </div>
+            <div class="col-md-7 featured-top-container">
+                <div class="row p-4">
+                    {% for item in FEATURED_PRODUCTS %}
+                        <div class="col-6 product">
+                            <div class="row align-items-end">
+                                <div class="col-md-6 p-0">
+                                    <img src="{{TimberImage(item.product_image).src|resize(600, 600, 'center')}}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="f6 mt1 mb0 lh-copy normal acme-text">{{item.product_brand}}</h6>
+                                    <h2 class="post-preview__title post-preview__title--with-link">
+                                        <a href="{{item.product_link}}" target="_blank">{{item.product_name}}</a>
+                                        <div class="small"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>{{item.price}}</bdi></span></div>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-5 pr-0 pl-4 post-image">
+                {% include "blocks/posts/featured-img.twig" with {
+						img: post.thumbnail.src,
+				}%}
+            </div>
+        </div>
+    </div>
+    
+        <article {{ function('post_class') }}>
+
+			{# prev next #}
+			{% include 'blocks/posts/prev-next.twig' %}
+
+			<section class="container container mb-6">
+				<div class="row row--more-margin-md">
+					{% for post in RELATED_CONTENT %}
+						{% include "blocks/posts/content.twig" with {
+								post: post,
+								class: 'col-sm-12 col-md-4 post-preview post-preview--normal mb-4'
+							}
+						%}
+					{% endfor %}
+				</div>
+			</section>
+
+        </article>
+    {% endfor %}
+{% endblock %}
